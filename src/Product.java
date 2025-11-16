@@ -142,14 +142,14 @@ public class Product implements Serializable {
     }
 
     public String getPaddedID() {
-        return pad(IDNum, ID_LEN);
+        return String.format("%6s", IDNum);
     }
 
     public String getPaddedName() {
-        return pad(name, NAME_LEN);
+        return String.format("%35s", name);
     }
 
     public String getPaddedDescription() {
-        return pad(description, DESC_LEN);
+        return String.format("%75s", description);
     }
 }

@@ -11,6 +11,9 @@ public class Product implements Serializable {
     private String name;
     private String description;
     private double cost;
+    public static final int ID_LEN = 6;
+    public static final int NAME_LEN = 35;
+    public static final int DESC_LEN = 75;
 
     public Product(String IDNum, String name, String description, double cost) {
         this.IDNum = IDNum;
@@ -131,5 +134,22 @@ public class Product implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(IDNum, name, description, cost);
+    }
+    public static String pad(String text, int length) {
+        if (text == null) text = "";
+        if (text.length() > length) return text.substring(0, length);
+        return String.format("%-" + length + "s", text);
+    }
+
+    public String getPaddedID() {
+        return pad(IDNum, ID_LEN);
+    }
+
+    public String getPaddedName() {
+        return pad(name, NAME_LEN);
+    }
+
+    public String getPaddedDescription() {
+        return pad(description, DESC_LEN);
     }
 }
